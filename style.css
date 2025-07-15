@@ -1,0 +1,248 @@
+/* style.css actualizado */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    display: flex; /* Para centrar el contenido verticalmente si es necesario */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    padding: 20px; /* Espaciado alrededor del contenedor principal */
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px); /* Efecto de desenfoque detrás de la tarjeta */
+    margin: 20px auto; /* Centra la tarjeta y le da margen vertical */
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a5568;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    font-size: 16px;
+}
+
+.btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    display: block; /* Hace que el botón ocupe todo el ancho disponible */
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Nuevos estilos para dashboard_personal/empresarial */
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.summary-card {
+    grid-column: 1 / -1; /* Ocupa todo el ancho */
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); /* Fondo degradado suave */
+    color: #4a5568;
+}
+
+.summary-card h2 {
+    color: #2d3748;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    text-align: center;
+}
+
+.summary-item h3 {
+    font-size: 2.2rem;
+    color: #2c5282;
+    margin-bottom: 5px;
+}
+
+.summary-item p {
+    font-size: 0.9rem;
+    color: #4a5568;
+    font-weight: 600;
+}
+
+.expenses-list {
+    max-height: 400px;
+    overflow-y: auto;
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #e2e8f0;
+}
+
+.expenses-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.expenses-list th, .expenses-list td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ebf4ff;
+}
+
+.expenses-list th {
+    background-color: #e2e8f0;
+    color: #2d3748;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.expenses-list tr:last-child td {
+    border-bottom: none;
+}
+
+.expenses-list tbody tr:hover {
+    background-color: #e6fffa;
+}
+
+/* Estilos para el mensaje de "No hay gastos" */
+.expenses-list p {
+    text-align: center;
+    color: #718096;
+    padding: 20px;
+}
+
+.charts-section {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.chart-container {
+    /* --- CAMBIOS AQUÍ --- */
+    position: relative; 
+    max-width: 500px;   /* <-- AJUSTA ESTE VALOR para cambiar el tamaño de la gráfica */
+    margin: 0 auto;     /* Centra el contenedor en la celda del grid */
+
+    /* Estilos originales */
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.chart-container h2 {
+    margin-bottom: 15px;
+}
+
+/* Estilos para el login y registro */
+.card-login-register {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center; /* Centrar elementos internos como h2 y form */
+}
+
+.card-login-register .btn {
+    margin-top: 20px; /* Mayor espacio superior para el botón principal */
+}
+
+/* Ajustes para el enlace de regresar en login/registro */
+.card-login-register a.btn {
+    margin-top: 10px; /* Espacio más pequeño para el botón de regresar */
+    background: #a0aec0; /* Un color diferente para el botón de regresar */
+    color: white;
+}
+
+.card-login-register a.btn:hover {
+    background: #718096;
+}
+
+/* Estilos para alertas de sesión si se implementan */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
