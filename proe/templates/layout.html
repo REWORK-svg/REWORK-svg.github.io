@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Gastos - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gestor de Gastos</h1>
+            <nav>
+                <ul>
+                    {% if session.logged_in %}
+                        <li><a href="{{ url_for('dashboard') }}"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                        <li><a href="{{ url_for('add_expense') }}"><i class="fas fa-plus-circle"></i> Agregar Gasto</a></li>
+                        <li><a href="{{ url_for('expense_history') }}"><i class="fas fa-history"></i> Historial</a></li>
+                        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a></li>
+                        <li><a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i> Registrarse</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gestor de Gastos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <h2>Bienvenido a tu Gestor de Gastos</h2>
+    <p>La herramienta perfecta para llevar un control de tus finanzas personales y empresariales.</p>
+    <p>Por favor, <a href="{{ url_for('login') }}">inicia sesión</a> o <a href="{{ url_for('register') }}">regístrate</a> para empezar.</p>
+{% endblock %}

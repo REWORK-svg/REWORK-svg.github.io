@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Bienvenido, {{ session.username }}</h2>
+
+    <div class="dashboard-section">
+        <h3>Gastos del mes actual</h3>
+        {% if gastos_mes %}
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Monto</th>
+                            <th>Tipo</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for gasto in gastos_mes %}
+                            <tr>
+                                <td>{{ gasto[0] }}</td>
+                                <td>${{ "{:,.2f}".format(gasto[1]) }}</td>
+                                <td>{{ gasto[2] }}</td>
+                                <td>{{ gasto[3].strftime('%d-%m-%Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No hay gastos registrados para el mes actual.</p>
+        {% endif %}
+    </div>
+
+    <div class="dashboard-section">
+        <h3>Próximos pagos (7 días)</h3>
+        {% if proximos_pagos %}
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Monto</th>
+                            <th>Fecha de Pago</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pago in proximos_pagos %}
+                            <tr>
+                                <td>{{ pago[0] }}</td>
+                                <td>${{ "{:,.2f}".format(pago[1]) }}</td>
+                                <td>{{ pago[2].strftime('%d-%m-%Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No tienes pagos pendientes en los próximos 7 días.</p>
+        {% endif %}
+    </div>
+
+    <div class="dashboard-section">
+        <h3>Análisis de Gastos</h3>
+        {% if graph_base64 %}
+            <img src="data:image/png;base64,{{ graph_base64 }}" alt="Gráfico de Gastos" class="responsive-image">
+        {% else %}
+            <p>No hay suficientes datos para generar un gráfico de gastos.</p>
+        {% endif %}
+    </div>
+
+    <p><a href="{{ url_for('add_expense') }}" class="btn btn-success">Agregar Nuevo Gasto</a></p>
+    <p><a href="{{ url_for('expense_history') }}" class="btn btn-secondary">Ver Historial Completo</a></p>
+
+{% endblock %}
